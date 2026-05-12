@@ -75,3 +75,11 @@ python -m coverage report -m
 ```
 
 După `cd LAB10/lab10_static_demo`, poți reveni la rădăcina depozitului cu `cd ../../..`.
+
+## Contribuitori pe GitHub și rolul Cursor Agent
+
+**De ce puteau apărea doi contribuitori** la acest depozit: GitHub numără la „Contributors” nu doar autorul commitului, ci și persoanele menționate în subsolul mesajului de commit prin linia standard **`Co-authored-by: …`**. Unele fluxuri din **Cursor** adaugă automat o astfel de linie (ex.: `Co-authored-by: Cursor <cursoragent@cursor.com>`) la commituri, chiar dacă autorul rămâne studentul. Din acest motiv, interfața GitHub putea afișa **doi contribuitori** (tu + Cursor), deși conținutul laboratorului este același.
+
+**Rolul Cursor Agent** în acest proiect a fost **doar** să ajute la **remedierea unor avertismente / erori** raportate de uneltele de verificare (de exemplu configurarea **`py-version`** în `.pylintrc` pentru Pylint, sau alte mesaje similare din CI), **fără** a schimba structura sau enunțul laboratoarelor. Nu înlocuiește și nu redefinește munca de laborator; laboratoarele rămân cele descrise mai sus.
+
+**Ce s-a făcut ulterior:** din istoricul Git au fost **eliminate liniile `Co-authored-by:`** din mesajele de commit, astfel încât lista de contribuitori să reflecte corect doar autorul uman. Dacă în Cursor este activată din nou opțiunea de co-autor la commit, GitHub poate reafișa un al doilea contribuitor — dezactivează acea opțiune în setările Git/Cursor dacă vrei să eviți situația.
