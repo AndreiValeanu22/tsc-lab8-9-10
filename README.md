@@ -10,7 +10,12 @@ Acest depozit urmează structura din [tsc-lab5-6-7](https://github.com/AndreiVal
 
 ## Comenzi utile (din rădăcina depozitului)
 
-```text
+**Important:** rulează aceste comenzi **din folderul `tsc-lab8-9-10`** (acolo unde se află `README.md` și folderele `LAB8/`, `LAB9/`). În **WSL / Linux / bash** folosește **calea cu `/`**, nu `C:\...` și nu `\` (acestea sunt pentru PowerShell / CMD). Dacă `cd` eșuează, rămâi în alt director și `pytest` fără argumente poate scana tot depozitul și poate eșua (ex.: lipsește `typeguard` pentru LAB10).
+
+```bash
+# Din rădăcina depozitului, ex. în WSL:
+# cd /mnt/c/Users/Andrei/Desktop/SEM_2/TSC/LAB-uri/tsc-lab8-9-10
+
 pip install -r LAB8/systems-testing/laboratories/integration-testing/requirements.txt
 pytest -v LAB8/systems-testing/laboratories/integration-testing/integration_tests.py
 
@@ -19,7 +24,10 @@ cd LAB9/systems-testing/laboratories/system-reg-fuzz-testing/RegTest
 pytest -v
 cd ../AtherisEx
 pytest -v test_atheris.py
+# Pentru LAB10, reveniți la rădăcina depozitului (tsc-lab8-9-10), apoi vezi secțiunea de mai jos.
 ```
+
+La `pip install -r` către folderul părinte, calea corectă este **`../requirements.txt`** (cu slash între `..` și `requirements.txt`). Greșeala `..requirements.txt` sau `..\` în bash duce la „No such file”.
 
 Pentru a regenera ieșirile regtest (după schimbări intenționate): `pytest --regtest-reset` din folderul `RegTest/`.
 
