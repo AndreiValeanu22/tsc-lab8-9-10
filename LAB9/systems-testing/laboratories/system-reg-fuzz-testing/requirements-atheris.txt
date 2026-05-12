@@ -1,0 +1,2 @@
+# Opțional: fuzzing cu Atheris (Linux / macOS; pe Windows instalarea eșuează de obicei).
+atheris>=2.0.0

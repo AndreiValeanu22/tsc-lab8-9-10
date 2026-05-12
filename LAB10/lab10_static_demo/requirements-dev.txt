@@ -1,0 +1,8 @@
+pylint>=3.0.0
+ruff>=0.4.0
+black>=24.0.0
+bandit>=1.7.0
+pytype>=2024.4.11
+pytest>=7.0.0
+typeguard>=4.0.0
+coverage>=7.0.0
