@@ -24,14 +24,45 @@ cd LAB9/systems-testing/laboratories/system-reg-fuzz-testing/RegTest
 pytest -v
 cd ../AtherisEx
 pytest -v test_atheris.py
-# Pentru LAB10, reveniți la rădăcina depozitului (tsc-lab8-9-10), apoi vezi secțiunea de mai jos.
+# LAB10: vezi secțiunea „Exemplu de rulare reușită” de mai jos.
 ```
 
 La `pip install -r` către folderul părinte, calea corectă este **`../requirements.txt`** (cu slash între `..` și `requirements.txt`). Greșeala `..requirements.txt` sau `..\` în bash duce la „No such file”.
 
 Pentru a regenera ieșirile regtest (după schimbări intenționate): `pytest --regtest-reset` din folderul `RegTest/`.
 
-```text
+## Exemplu de rulare reușită (WSL / Linux)
+
+Blocul de mai jos este echivalent cu secțiunea „Comenzi utile”, cu **`cd` explicit** la început. Mesajul *Defaulting to user installation because normal site-packages is not writeable* de la `pip` este normal pe multe instalări Linux/WSL (pachetele merg în `~/.local`).
+
+```bash
+cd /mnt/c/Users/Andrei/Desktop/SEM_2/TSC/LAB-uri/tsc-lab8-9-10
+
+pip install -r LAB8/systems-testing/laboratories/integration-testing/requirements.txt
+pytest -v LAB8/systems-testing/laboratories/integration-testing/integration_tests.py
+
+pip install -r LAB9/systems-testing/laboratories/system-reg-fuzz-testing/requirements.txt
+cd LAB9/systems-testing/laboratories/system-reg-fuzz-testing/RegTest
+pytest -v
+cd ../AtherisEx
+pytest -v test_atheris.py
+```
+
+**Rezultate așteptate** (după ce dependențele sunt instalate):
+
+| Pas | Comandă / zonă | Rezumat |
+|-----|------------------|---------|
+| LAB8 | `pytest -v LAB8/.../integration_tests.py` | **8 passed** (teste API; necesită rețea) |
+| LAB9 | `RegTest` → `pytest -v` | **8 passed** (regtest; `failed regression tests: 0`) |
+| LAB9 | `AtherisEx` → `pytest -v test_atheris.py` | **7 passed** (`TestAtherisHelpers`) |
+
+Dacă `pytest` din `AtherisEx` raportează și pluginul `regtest`, este în regulă — nu există teste regtest în acel fișier, doar teste unitare.
+
+### Laborator 10 (același depozit, din rădăcină)
+
+```bash
+cd /mnt/c/Users/Andrei/Desktop/SEM_2/TSC/LAB-uri/tsc-lab8-9-10
+
 pip install -r LAB10/lab10_static_demo/requirements-dev.txt
 cd LAB10/lab10_static_demo
 python -m pylint statistics_demo.py tests
@@ -42,3 +73,5 @@ python -m pytype statistics_demo.py
 python -m coverage run -m pytest tests -v --typeguard-packages=statistics_demo
 python -m coverage report -m
 ```
+
+După `cd LAB10/lab10_static_demo`, poți reveni la rădăcina depozitului cu `cd ../../..`.
